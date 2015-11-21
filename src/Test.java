@@ -47,5 +47,26 @@ public class Test {
 		WineCup wineCup2 = SCupFactory.createCup(WineCup.class);
 		wineCup2.print();
 		
+		System.out.println("==================");
+		//模板方法模式测试1
+		CarA carA = new CarA();
+		CarB carB = new CarB();
+		carA.carRun();
+		carB.carRun();
+		System.out.println("==================");
+		//模板方法模式测试2
+		Product1 product1 = new Product1();
+		Product2 product2 = new Product2();
+		System.out.println("制造Product1");
+		product1.createProduct(new int[]{0,1,3,2});
+		System.out.println("制造Product2");
+		product2.createProduct(new int[]{1,3,2,0});
+		
+		System.out.println("==================");
+		//建造者模式测试
+		Director director = new Director();
+		director.getProduct1();
+		director.getProduct2();
+		
 	}
 }
