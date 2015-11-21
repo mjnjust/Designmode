@@ -1,3 +1,10 @@
 1、目的：学习各种设计模式
+
 2、编码：utf-8
-3、Singleton1：懒汉式单例模式  Singleton饿汉式单例模式
+
+3、单例模式：Singleton1：懒汉式单例模式  Singleton2饿汉式单例模式 Singleton3 拓展的类，可以限定实例化该类的个数
+
+4、工厂模式：以杯子为例，AbastractCupFactory是杯子工厂的虚拟类，CupFactory是一个可以产生杯子的工厂，ICup是一个杯子的接口，
+所有不同类型的杯子都要实现这个接口，杯子有WineCup酒杯,TeaCup茶杯,WaterCup水杯。
+
+5、建造者模式：
