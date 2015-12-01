@@ -71,15 +71,29 @@ public class Test {
 		director.getProduct1();
 		director.getProduct2();
 		
+		System.out.println("==================");
 		//代理模式测试
 		//代理
 		Student student = new Student("test");
 		DoHomeWork proxy = student.getProxy();
 		proxy.doHomeWork();
 		
-		//动态代理类
+		System.out.println("==================");
+		//动态代理类1
+		Student student2 = new Student("动态代理");
+		ClassLoader cl = student2.getClass().getClassLoader();
+		HomeWorkProxy3 handler = new HomeWorkProxy3(student2);
+		DoHomeWork proxy2 = (DoHomeWork) Proxy.newProxyInstance(cl, new Class[]{DoHomeWork.class}, handler); 
+		proxy2.doHomeWork();
+		proxy2.hashCode();
 		
-		
+		System.out.println("=================");
+		//动态代理类2
+		Student student3 = new Student("动态代理2");
+		ClassLoader cl2 = student3.getClass().getClassLoader();
+		HomeWorkProxy3 handler2 = new HomeWorkProxy3(student3);
+		DoHomeWork proxy3 = DynamicProxy.newProxyInstance(cl2, new Class[]{DoHomeWork.class}, handler2);
+		proxy3.doHomeWork();
 		
 	}
 }
