@@ -1,3 +1,6 @@
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Proxy;
+
 
 public class Test {
 	static int i = 1;
@@ -67,6 +70,16 @@ public class Test {
 		Director director = new Director();
 		director.getProduct1();
 		director.getProduct2();
+		
+		//代理模式测试
+		//代理
+		Student student = new Student("test");
+		DoHomeWork proxy = student.getProxy();
+		proxy.doHomeWork();
+		
+		//动态代理类
+		
+		
 		
 	}
 }
