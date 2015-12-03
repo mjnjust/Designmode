@@ -1,11 +1,15 @@
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.Scanner;
 
 
 public class Test {
 	static int i = 1;
 	static int num = 5 ;
+	
 	public static void main(String args[]) {
+		
+		
 		
 		//懒汉式单例结果测试
 		Singleton1 singleton11 = Singleton1.getInstance() ;
@@ -94,6 +98,42 @@ public class Test {
 		HomeWorkProxy3 handler2 = new HomeWorkProxy3(student3);
 		DoHomeWork proxy3 = DynamicProxy.newProxyInstance(cl2, new Class[]{DoHomeWork.class}, handler2);
 		proxy3.doHomeWork();
+		
+		System.out.println("=================");
+		//原型模式
+		Ball ball = new Ball();
+		ball.id = 1;
+		ball.num = new int[]{1,2};
+		T t = new T();
+		t.t = 1;
+		ball.t =t;
+		ball.list.add("i am the first string ball.list");
+		ball.teststring = "i am ball!" ;
+		Ball cloneball = null ;
+		try {
+			cloneball = (Ball) ball.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("ball信息：");
+		System.out.println("id:"+ball.id+" num:"+ball.num[0]+" "+ball.num[1]+" T:"+ball.t.t+" list[0]:"+ball.list.get(0)+" string:"+ball.teststring);
+		System.out.println("cloneball信息:");
+		System.out.println("id:"+cloneball.id+" num:"+cloneball.num[0]+" "+cloneball.num[1]+" T:"+cloneball.t.t+" list[0]:"+
+				cloneball.list.get(0)+" string:"+cloneball.teststring);
+		System.out.println("两者的teststring地址是否相同："+(ball.teststring == cloneball.teststring));
+		System.out.println("修改ball信息：");
+		ball.id = 2;
+		ball.num[0] = 2;
+		ball.num[1] = 3;
+		ball.t.t = 2;
+		ball.list.remove(0);
+		ball.teststring = "i am ball after change!" ;
+		ball.list.add("i am the first string ball.list after change !");
+		System.out.println("id:"+ball.id+" num:"+ball.num[0]+" "+ball.num[1]+" T:"+ball.t.t+" list[0]:"+ball.list.get(0)+" string:"+ball.teststring);
+		System.out.println("此时cloneball的信息变化为：");
+		System.out.println("id:"+cloneball.id+" num:"+cloneball.num[0]+" "+cloneball.num[1]+" T:"+cloneball.t.t+" list[0]:"+
+				cloneball.list.get(0)+" string:"+cloneball.teststring);
 		
 	}
 }
