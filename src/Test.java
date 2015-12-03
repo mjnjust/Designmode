@@ -6,6 +6,9 @@ import package2.ArtillerySoldier;
 import package2.FootSoldier;
 import package2.Mediator;
 import package2.SpySoldier;
+import package3.ButiCommond;
+import package3.CodeCommond;
+import package3.Invoke;
 
 
 public class Test {
@@ -153,5 +156,20 @@ public class Test {
 		spySoldier.shouldCharge();
 		
 		artillerySoldier.shoudCharge();
+		//命令模式
+		System.out.println("==================");
+		Invoke manager = new Invoke();
+		ButiCommond butiCommond = new ButiCommond();
+		CodeCommond codeCommond = new CodeCommond();
+		manager.setCommand(codeCommond);
+		manager.action();
+		manager.setCommand(butiCommond);
+		manager.action();
+		
+		
+		
+		
+		
+		
 	}
 }
