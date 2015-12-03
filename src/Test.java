@@ -2,6 +2,11 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 import java.util.Scanner;
 
+import package2.ArtillerySoldier;
+import package2.FootSoldier;
+import package2.Mediator;
+import package2.SpySoldier;
+
 
 public class Test {
 	static int i = 1;
@@ -135,5 +140,18 @@ public class Test {
 		System.out.println("id:"+cloneball.id+" num:"+cloneball.num[0]+" "+cloneball.num[1]+" T:"+cloneball.t.t+" list[0]:"+
 				cloneball.list.get(0)+" string:"+cloneball.teststring);
 		
+		//中介者模式
+		System.out.println("==================");
+		Mediator mediator = new Mediator();
+		FootSoldier footSoldier = new FootSoldier(mediator);
+		ArtillerySoldier artillerySoldier = new ArtillerySoldier(mediator);
+		SpySoldier spySoldier = new SpySoldier(mediator);
+		footSoldier.needSpy();
+		footSoldier.needBombard();
+		
+		spySoldier.shouldBombard();
+		spySoldier.shouldCharge();
+		
+		artillerySoldier.shoudCharge();
 	}
 }
