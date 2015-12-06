@@ -1,5 +1,6 @@
 package package6;
 
+//实现多接口转换的适配器模式
 public class Adapter2 implements INewUserInfo{
 	private IOldUserPersonalInfo oldUserPersonalInfo ;
 	private IOldUserWorkInfo oldUserWorkInfo ;
