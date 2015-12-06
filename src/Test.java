@@ -9,6 +9,11 @@ import package2.SpySoldier;
 import package3.ButiCommond;
 import package3.CodeCommond;
 import package3.Invoke;
+import package4.Message;
+import package4.Response1;
+import package4.Response2;
+import package4.Response3;
+import package4.Submiter;
 
 
 public class Test {
@@ -166,8 +171,41 @@ public class Test {
 		manager.setCommand(butiCommond);
 		manager.action();
 		
+		System.out.println("==================");
+		//责任链模式
+		Response1 teamleader = new Response1();
+		Response2 smallmanager = new Response2();
+		Response3 bigmanager = new Response3();
+		teamleader.setNext(smallmanager);
+		smallmanager.setNext(bigmanager);
 		
+		Message message1 = new Message();
+		message1.setType(1);
+		message1.setMessage("等级为1的事务");
+		teamleader.handler(message1);
 		
+		Message message2 = new Message();
+		message2.setType(2);
+		message2.setMessage("等级为2的事务");
+		teamleader.handler(message2);
+		
+		Message message3 = new Message();
+		message3.setType(3);
+		message3.setMessage("等级为3的事务");
+		teamleader.handler(message3);
+		
+		Message message4 = new Message();
+		message4.setType(4);
+		message4.setMessage("等级为4的事务");
+		teamleader.handler(message4);
+		
+		System.out.println("==================");
+		//责任链模式添加了提交的封装类
+		Submiter submiter = new Submiter();
+		submiter.submitMessage(message1);
+		submiter.submitMessage(message2);
+		submiter.submitMessage(message3);
+		submiter.submitMessage(message4);
 		
 		
 		
